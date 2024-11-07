@@ -1,0 +1,72 @@
+{% include 'header.html'%}
+<center><h1 class="">Your Account</h1></center>
+<h2 >Welcome {{user.username}} ...</h2>
+{% if data1 %}
+    <h3>Your Appointments:</h3>
+    <div class="table-responsive p-lg-4">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Qualification</th>
+                <th scope="col">Specialist</th>
+                <th scope="col">Year of Experience</th>
+                <th scope="col">Your Appointment</th>
+                <th scope="col">Timing</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in data1 %}
+            <tr>
+                <td >{{i.dname}}</td>
+                <td >{{i.dqualification}}</td>
+                <td >{{i.dspecialization}}</td>
+                <td >{{i.yoe}}</td>
+                <td >{{i.apdate}}</td>
+                <td >{{i.time}}</td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <h3>Sorry,no doctor found</h3>
+{% endif %}
+
+{% if data %}
+<h3>Available Doctors:</h3>
+    <div class="table-responsive p-lg-4">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Qualification</th>
+                <th scope="col">Specialist</th>
+                <th scope="col">Year of Experience</th>
+                <th scope="col">Available</th>
+                <th scope="col">Timing</th>
+                <th scope="col">Make Appointment</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i in data %}
+            <tr>
+                <td >{{i.dname}}</td>
+                <td >{{i.dqualification}}</td>
+                <td >{{i.dspecialization}}</td>
+                <td >{{i.yoe}}</td>
+                <td >{{i.day}}</td>
+                <td >{{i.time}}</td>
+                <td ><a href="/make-appointment/{{i.did}}/{{user.username}}" class="text-primary">Get Appoinment</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <h3>Sorry,no doctor found</h3>
+{% endif %}
+<a href="/logout" class="btn btn-outline-danger">LOGOUT</a>
+{% include 'footer.html'%}

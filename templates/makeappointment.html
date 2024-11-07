@@ -1,0 +1,44 @@
+{% include "header.html" %}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Doctor Name</th>
+            <th scope="col">Qualification</th>
+            <th scope="col">Specialist</th>
+            <th scope="col">Year of Experience</th>
+            <th scope="col">Available</th>
+            <th scope="col">Timing</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+        <tr>
+            <td >{{i.dname}}</td>
+            <td >{{i.dqualification}}</td>
+            <td >{{i.dspecialization}}</td>
+            <td >{{i.yoe}}</td>
+            <td >{{i.day}}</td>
+            <td >{{i.time}}</td>
+            
+        </tr>
+        {% endfor%}
+        
+    </tbody>
+</table>
+{% for i in messages%}
+<p class="alert alert-danger">{{ i }}</p>
+{% endfor %}
+<form method="POST" class="form-control">
+ {% csrf_token %}
+ <div class="form-group">
+<input type="date" class="form-control"  name="dat">
+ </div>
+ <div class="form-group">
+    <input type="submit" class="form-control" value="SUBMIT">
+     </div>
+
+</form>
+{% include "footer.html" %}
